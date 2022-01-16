@@ -56,7 +56,7 @@ return [
 
     'settings'       => [
         'auth'       => false,
-        'ga_id'      => '',
+        'ga_id'      => 'G-DE36YTFR3F',
         'middleware' => [
             'web',
         ]
