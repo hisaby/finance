@@ -9,8 +9,8 @@ import { Head, useForm } from '@inertiajs/inertia-react';
 
 export default function Login({ status }) {
     const { data, setData, post, processing, errors, reset } = useForm({
-        email: '',
-        password: '',
+        email: 'admin@test.com',
+        password: 'admin123',
         remember: '',
     });
 
@@ -48,8 +48,7 @@ export default function Login({ status }) {
                         value={data.email}
                         className="mt-1 block w-full"
                         autoComplete="username"
-                        isFocused={true}
-                        handleChange={onHandleChange}
+                        handleChange={() => {}}
                     />
                 </div>
 
@@ -62,16 +61,8 @@ export default function Login({ status }) {
                         value={data.password}
                         className="mt-1 block w-full"
                         autoComplete="current-password"
-                        handleChange={onHandleChange}
+                        handleChange={() => {}}
                     />
-                </div>
-
-                <div className="block mt-4">
-                    <label className="flex items-center">
-                        <Checkbox name="remember" value={data.remember} handleChange={onHandleChange} />
-
-                        <span className="ml-2 text-sm text-gray-600">Remember me</span>
-                    </label>
                 </div>
 
                 <div className="flex items-center justify-end mt-4">
