@@ -1,4 +1,4 @@
-import { Fragment, useRef, useState } from 'react'
+import { Fragment, useRef } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import { ExclamationIcon } from '@heroicons/react/outline'
 
@@ -6,11 +6,9 @@ export default function Delete({item, resource, onClose, onDelete}) {
   const cancelButtonRef = useRef(null)
   
   const deleteItem = () => {
-    return alert('Delete functionality is disabled in the demo app');
-
-    //Api.delete({id: item.id, resource: resource})
-        // .then(() => onDelete())
-        // .catch(console.error)
+    Api.delete({id: item.id, resource: resource})
+        .then(() => onDelete())
+        .catch(console.error)
   }
 
   return (
