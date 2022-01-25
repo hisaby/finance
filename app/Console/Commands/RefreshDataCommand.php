@@ -44,7 +44,7 @@ class RefreshDataCommand extends Command
         DB::table('sms')->truncate();
         DB::table('brands')->truncate();
         DB::table('categories')->truncate();
-        $this->call('db:seed', ['--force']);
+        $this->call('db:seed', ['--force' => true]);
 
         $this->call('up');
 
