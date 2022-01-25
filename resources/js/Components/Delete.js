@@ -6,9 +6,11 @@ export default function Delete({item, resource, onClose, onDelete}) {
   const cancelButtonRef = useRef(null)
   
   const deleteItem = () => {
-    Api.delete({id: item.id, resource: resource})
-        .then(() => onDelete())
-        .catch(console.error)
+    return alert('Delete functionality is disabled in the demo app');
+
+    //Api.delete({id: item.id, resource: resource})
+        // .then(() => onDelete())
+        // .catch(console.error)
   }
 
   return (
