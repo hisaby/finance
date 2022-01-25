@@ -28,7 +28,7 @@
         </script>
     </head>
     <body class="font-sans antialiased">
-        <div class="py-2 text-center font-bold text-sm bg-green-500 text-white">The database content for this demo app will be refreshed every 30 mins.</div>
+        <div class="py-2 text-center font-bold text-sm bg-green-500 text-white">The database content for this demo app will be refreshed every 15 mins.</div>
         @inertia
         <script>
             window.AppCurrency = "{{ config('finance.currency') }}";

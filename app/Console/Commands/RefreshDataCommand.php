@@ -40,8 +40,10 @@ class RefreshDataCommand extends Command
     {
         $this->call('down', ['--render' => "errors::refresh"]);
 
-        DB::table('transactions')->delete();
-        DB::table('sms')->delete();
+        DB::table('transactions')->truncate();
+        DB::table('sms')->truncate();
+        DB::table('brands')->truncate();
+        DB::table('categories')->truncate();
         $this->call('db:seed', ['--force']);
 
         $this->call('up');
