@@ -16,7 +16,7 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         $schedule->command('finance:refresh')->onOneServer()->everyFifteenMinutes();
-        $schedule->command('finance:report')->onOneServer()->lastDayOfMonth('23:00');
+        // $schedule->command('finance:report')->onOneServer()->lastDayOfMonth('23:00');
     }
 
     /**
