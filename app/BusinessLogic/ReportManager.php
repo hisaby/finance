@@ -43,10 +43,24 @@ class ReportManager implements ReportManagerContract
 
             $brandsData = $this->calculateAndAddAllBrandsData($brandsData, $category);
 
-            $this->addSection($category->name, $brandsData);
+            // issue with rendering big row using Dompdf library, 
+            // the workaround is to split the list of brands to
+            // multiple sections that each one can fit in page.
+            $this->splitBrandListIntoPages($brandsData, $category);
         }
 
         return $this->data;
+    }
+
+    protected function splitBrandListIntoPages($brandsData, $category)
+    {
+        if(count(array_chunk($brandsData, 25)) > 1) {
+            foreach(array_chunk($brandsData, 25) as $index => $chunk) {
+                $this->addSection($category->name . "-" . $index + 1, $chunk);
+            }
+        }else {
+            $this->addSection($category->name, $brandsData);
+        }
     }
 
     protected function addSection($sectionName, $data)
@@ -126,7 +140,7 @@ class ReportManager implements ReportManagerContract
     protected function getTotalIncome()
     {
         $total = Transaction::income()->whereBetween('created_at', [now()->startOfMonth(), now()->endOfMonth()])->sum('amount');
-        $totalExcludingThisMonth = Transaction::income()->whereBetween('created_at', [now()->subMonth()->startOfMonth(), now()->subMonth()->endOfMonth()])->sum('amount');
+        $totalExcludingThisMonth = Transaction::income()->whereBetween('created_at', [now()->subMonthNoOverflow()->startOfMonth(), now()->subMonthNoOverflow()->endOfMonth()])->sum('amount');
         
         $change = ! $totalExcludingThisMonth ? '-' : number_format(($total / $totalExcludingThisMonth - 1) * 100, 2);
         
@@ -142,7 +156,7 @@ class ReportManager implements ReportManagerContract
     protected function getTotalExpenses()
     {
         $total = Transaction::expenses()->whereBetween('created_at', [now()->startOfMonth(), now()->endOfMonth()])->sum('amount');
-        $totalExcludingThisMonth = Transaction::expenses()->whereBetween('created_at', [now()->subMonth()->startOfMonth(), now()->subMonth()->endOfMonth()])->sum('amount');
+        $totalExcludingThisMonth = Transaction::expenses()->whereBetween('created_at', [now()->subMonthNoOverflow()->startOfMonth(), now()->subMonthNoOverflow()->endOfMonth()])->sum('amount');
         
         $change = ! $totalExcludingThisMonth ? '-' : number_format(($total / $totalExcludingThisMonth - 1) * 100, 2);
         
