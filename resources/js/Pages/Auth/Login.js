@@ -1,10 +1,9 @@
 import React, { useEffect } from 'react';
-import Button from '@/Components/Button';
-import Checkbox from '@/Components/Checkbox';
+import Button from '@/Components/Global/Button';
 import Guest from '@/Layouts/Guest';
-import Input from '@/Components/Input';
-import Label from '@/Components/Label';
-import ValidationErrors from '@/Components/ValidationErrors';
+import Input from '@/Components/Global/Input';
+import Label from '@/Components/Global/Label';
+import ValidationErrors from '@/Components/Global/ValidationErrors';
 import { Head, useForm } from '@inertiajs/inertia-react';
 
 export default function Login({ status }) {
@@ -21,7 +20,7 @@ export default function Login({ status }) {
     }, []);
 
     const onHandleChange = (event) => {
-        setData(event.target.name, event.target.type === 'checkbox' ? event.target.checked : event.target.value);
+        setData(event.target.name, event.target.value);
     };
 
     const submit = (e) => {

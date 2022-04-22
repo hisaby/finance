@@ -1,16 +1,12 @@
-import { Fragment, useRef } from 'react'
+import React, { Fragment, useRef } from 'react';
 import { Dialog, Transition } from '@headlessui/react'
 import { ExclamationIcon } from '@heroicons/react/outline'
 
 export default function Delete({item, resource, onClose, onDelete}) {
-  const cancelButtonRef = useRef(null)
+  const cancelButtonRef = useRef()
   
   const deleteItem = () => {
     return alert('Delete functionality is disabled in the demo app');
-
-    //Api.delete({id: item.id, resource: resource})
-        // .then(() => onDelete())
-        // .catch(console.error)
   }
 
   return (
@@ -29,7 +25,6 @@ export default function Delete({item, resource, onClose, onDelete}) {
             <Dialog.Overlay className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" />
           </Transition.Child>
 
-          {/* This element is to trick the browser into centering the modal contents. */}
           <span className="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">
             &#8203;
           </span>
@@ -53,7 +48,7 @@ export default function Delete({item, resource, onClose, onDelete}) {
                       Delete Resource
                     </Dialog.Title>
                     <div className="mt-2">
-                      <p className="text-sm text-gray-500">
+                      <p data-testid="delete-warning" className="text-sm text-gray-500">
                         Are you sure you want to delete this resource?
                       </p>
                     </div>
