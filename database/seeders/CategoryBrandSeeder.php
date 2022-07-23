@@ -14,7 +14,7 @@ class CategoryBrandSeeder extends Seeder
      */
     public function run()
     {
-        $income = Category::create(['name' => 'Income', 'type' => Category::INCOME]);
+        $income = Category::create(['name' => 'Income', 'type' => Category::INCOME, 'color' => 'blue']);
         $income->brands()->create(['name' => 'Salary'])->transactions()->createMany([
             [
                 'amount' => 15000,
@@ -34,7 +34,7 @@ class CategoryBrandSeeder extends Seeder
             ]
         ]);
 
-        $housing = Category::create(['name' => 'Housing', 'type' => Category::EXPENSES]);
+        $housing = Category::create(['name' => 'Housing', 'type' => Category::EXPENSES, 'color' => 'green']);
         $housing->brands()->create(['name' => 'House Rent'])->transactions()->createMany([
             [
                 'amount' => 4000,
@@ -50,7 +50,7 @@ class CategoryBrandSeeder extends Seeder
             ]
         ]);
 
-        $groceries = Category::create(['name' => 'Groceries', 'type' => Category::EXPENSES]);
+        $groceries = Category::create(['name' => 'Groceries', 'type' => Category::EXPENSES, 'color' => 'red']);
         $groceries->brands()->create(['name' => 'CARREFOUR'])->transactions()->createMany([
             [
                 'amount' => 200,
@@ -82,7 +82,7 @@ class CategoryBrandSeeder extends Seeder
             ],
         ]);
 
-        $utils = Category::create(['name' => 'Utilities', 'type' => Category::EXPENSES]);
+        $utils = Category::create(['name' => 'Utilities', 'type' => Category::EXPENSES, 'color' => 'pink']);
         $utils->brands()->create(['name' => 'Water'])->transactions()->createMany([
             [
                 'amount' => 125,
@@ -100,7 +100,7 @@ class CategoryBrandSeeder extends Seeder
 
 
 
-        $shopping = Category::create(['name' => 'Shopping', 'type' => Category::EXPENSES]);
+        $shopping = Category::create(['name' => 'Shopping', 'type' => Category::EXPENSES, 'color' => 'indigo']);
         $shopping->brands()->create(['name' => 'IKEA'])->transactions()->createMany([
             [
                 'amount' => 302,
