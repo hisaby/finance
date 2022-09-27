@@ -6,9 +6,10 @@ import Authenticated from '@/Layouts/Authenticated';
 import LoadMore from '@/Components/Global/LoadMore';
 import Edit from './Edit';
 import Create from './Create';
+import Button from '@/Components/Global/Button';
 import Delete from '@/Components/Domain/Delete';
-import { getCategories } from '../../Api';
-import { animateRowItem } from '../../Utils';
+import { getCategories } from '@/Api';
+import { animateRowItem } from '@/Utils';
 
 export default function Index({auth}) {
     const [categories, setCategories] = useState([]);
@@ -44,7 +45,7 @@ export default function Index({auth}) {
             if(category.id === updatedItem.id) {
                 return updatedItem
             }
-            
+
             return category
         }));
 
@@ -59,7 +60,7 @@ export default function Index({auth}) {
             setCategories(categories.filter(item => item.id != tempDeleteItem.id));
         })
     }
-    
+
     return (
         <Authenticated auth={auth}
             header={
@@ -68,23 +69,21 @@ export default function Index({auth}) {
                         Categories
                     </h2>
 
-                    <button onClick={() => setShowCreate(true)} className="inline-flex items-center px-4 py-2 bg-blue-500 hover:bg-blue-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest active:bg-blue-500 transition ease-in-out duration-150">
-                        Create Category
-                    </button>
+                    <Button children={"Create Category"} type="button" onClick={() => setShowCreate(true)} />
                 </div>
             }>
             <Head title="Categories" />
 
-            <Create showCreate={showCreate} 
+            <Create showCreate={showCreate}
                 onCreate={onCreate}
                 onClose={() => setShowCreate(false)} />
 
-            <Edit category={editCategory} 
-                onClose={() => setEditCategory(null)} 
+            <Edit category={editCategory}
+                onClose={() => setEditCategory(null)}
                 onUpdate={onUpdate}
                 />
-        
-            <Delete item={deleteItem} 
+
+            <Delete item={deleteItem}
                 resource="Category"
                 onClose={() => setDeleteItem(null)}
                 onDelete={onDelete}  />
@@ -117,9 +116,7 @@ export default function Index({auth}) {
                                                 <tr key={item.id} className='loaded' id={'item-' + item.id}>
                                                     <td className="px-6 py-4 whitespace-nowrap text-sm font-bold text-gray-800">{item.id}</td>
                                                     <td className="whitespace-nowrap">
-                                                    <span className={"badge badge-" + item.color}>
-                                                        {item.name}
-                                                        </span>
+                                                        <span className={"badge badge-" + item.color}>{item.name}</span>
                                                     </td>
                                                     <td className="px-6 py-4 whitespace-nowrap text-sm font-bold text-gray-800">{item.type}</td>
                                                     <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
@@ -130,7 +127,7 @@ export default function Index({auth}) {
 
                                                         <button onClick={() => setDeleteItem(item)} type="button" className="ml-2">
                                                             <span className="sr-only">Delete</span>
-                                                            
+
                                                             <TrashIcon className="h-5 w-5 text-gray-500" aria-hidden="true" />
                                                         </button>
                                                     </td>
