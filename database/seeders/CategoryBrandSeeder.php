@@ -21,6 +21,14 @@ class CategoryBrandSeeder extends Seeder
                 'created_at' => now()->subDay()
             ],
             [
+                'amount' => 1000,
+                'created_at' => now()->subDays(4)
+            ],
+            [
+                'amount' => 530,
+                'created_at' => now()->subDays(10)
+            ],
+            [
                 'amount' => 14000,
                 'created_at' => now()->subMonth()
             ],
