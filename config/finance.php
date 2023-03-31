@@ -1,22 +1,23 @@
 <?php
 
+use App\Domain\SectionDivider;
+use App\GraphQL\Queries\NetWorth;
 use App\GraphQL\Queries\TotalCash;
 use App\GraphQL\Queries\TotalIncome;
 use App\GraphQL\Queries\TotalSavings;
-use App\GraphQL\Queries\TotalExpenses;
 use App\GraphQL\Queries\TotalPerBrand;
-use App\GraphQL\Queries\SectionDivider;
+use App\GraphQL\Queries\TotalExpenses;
 use App\GraphQL\Queries\TotalInvestment;
 use App\GraphQL\Queries\TotalIncomeTrend;
 use App\GraphQL\Queries\IncomePerCategory;
-use App\GraphQL\Queries\TotalExpensesTrend;
 use App\GraphQL\Queries\TotalPerBrandTrend;
+use App\GraphQL\Queries\TotalExpensesTrend;
 use App\GraphQL\Queries\ExpensesPerCategory;
 use App\GraphQL\Queries\NumberOfTransactions;
 use App\GraphQL\Queries\TotalPerCategoryTrend;
 use App\GraphQL\Queries\LowestValueTransaction;
-use App\GraphQL\Queries\HighestValueTransaction;
 use App\GraphQL\Queries\AverageValueTransaction;
+use App\GraphQL\Queries\HighestValueTransaction;
 use App\GraphQL\Queries\NumberOfTransactionsPerBrand;
 use App\GraphQL\Queries\TransactionsStandardDeviation;
 use App\GraphQL\Queries\NumberOfTransactionsPerCategory;
@@ -37,9 +38,10 @@ return [
     ],
     'reports' => [
         (new SectionDivider)->withTitle("🔎 Overview"),
-        (new TotalCash)->setWidth('1/3'),
-        (new TotalSavings)->setWidth('1/3'),
-        (new TotalInvestment)->setWidth('1/3'),
+        (new NetWorth)->setWidth('1/4'),
+        (new TotalCash)->setWidth('1/4'),
+        (new TotalSavings)->setWidth('1/4'),
+        (new TotalInvestment)->setWidth('1/4'),
         (new SectionDivider)->withTitle("📊 Analytics"),
         new TotalIncome,
         new TotalExpenses,
