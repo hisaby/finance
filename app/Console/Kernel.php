@@ -17,6 +17,9 @@ class Kernel extends ConsoleKernel
     {
         $schedule->command('finance:refresh')->onOneServer()->everyFifteenMinutes();
         // $schedule->command('finance:report')->onOneServer()->lastDayOfMonth('23:00');
+
+        $schedule->command('cache:prune-stale-tags')->hourly();
+
     }
 
     /**
