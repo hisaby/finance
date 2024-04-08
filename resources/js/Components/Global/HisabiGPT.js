@@ -5,7 +5,7 @@ import { customQuery } from '../../Api';
 import {AtSymbolIcon, XIcon} from '@heroicons/react/solid';
 import FloatingButton from './FloatingButton';
 
-export default function FinanceGPT() {
+export default function HisabiGPT() {
   const [message, setMessage] = useState('');
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);

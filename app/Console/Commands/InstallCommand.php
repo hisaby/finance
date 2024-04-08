@@ -12,14 +12,14 @@ class InstallCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'finance:install';
+    protected $signature = 'hisabi:install';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Init the finance app';
+    protected $description = 'Init the hisabi app';
 
     /**
      * Create a new command instance.
@@ -66,14 +66,11 @@ class InstallCommand extends Command
     public function writeLogo()
     {
         $asciiLogo = <<<EOT
-        $$$$$$$$\ $$$$$$\ $$\   $$\  $$$$$$\  $$\   $$\  $$$$$$\  $$$$$$$$\ 
-        $$  _____|\_$$  _|$$$\  $$ |$$  __$$\ $$$\  $$ |$$  __$$\ $$  _____|
-        $$ |        $$ |  $$$$\ $$ |$$ /  $$ |$$$$\ $$ |$$ /  \__|$$ |      
-        $$$$$\      $$ |  $$ $$\$$ |$$$$$$$$ |$$ $$\$$ |$$ |      $$$$$\    
-        $$  __|     $$ |  $$ \$$$$ |$$  __$$ |$$ \$$$$ |$$ |      $$  __|   
-        $$ |        $$ |  $$ |\$$$ |$$ |  $$ |$$ |\$$$ |$$ |  $$\ $$ |      
-        $$ |      $$$$$$\ $$ | \$$ |$$ |  $$ |$$ | \$$ |\$$$$$$  |$$$$$$$$\ 
-        \__|      \______|\__|  \__|\__|  \__|\__|  \__| \______/ \________|          
+_     _           _     _ 
+| |__ (_)___  __ _| |__ (_)
+| '_ \| / __|/ _` | '_ \| |
+| | | | \__ \ (_| | |_) | |
+|_| |_|_|___/\__,_|_.__/|_|               
 EOT;
 
         $this->line("\n".$asciiLogo."\n");
@@ -82,9 +79,9 @@ EOT;
     public function writeWelcomeMessage()
     {
         if ($this->confirm('Would you like to show some love by supporting this project?')) {
-            if(PHP_OS_FAMILY == 'Darwin') exec('open https://github.com/saleem-hadad/finance');
-            if(PHP_OS_FAMILY == 'Windows') exec('start https://github.com/saleem-hadad/finance');
-            if(PHP_OS_FAMILY == 'Linux') exec('xdg-open https://github.com/saleem-hadad/finance');
+            if(PHP_OS_FAMILY == 'Darwin') exec('open https://github.com/hisabi-app/hisabi');
+            if(PHP_OS_FAMILY == 'Windows') exec('start https://github.com/hisabi-app/hisabi');
+            if(PHP_OS_FAMILY == 'Linux') exec('xdg-open https://github.com/hisabi-app/hisabi');
 
             $this->line("Thanks! Means the world to me!");
         }
