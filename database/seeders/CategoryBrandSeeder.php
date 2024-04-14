@@ -59,7 +59,7 @@ class CategoryBrandSeeder extends Seeder
         ]);
 
         $groceries = Category::create(['name' => 'Groceries', 'type' => Category::EXPENSES, 'color' => 'red']);
-        $groceries->brands()->create(['name' => 'CARREFOUR'])->transactions()->createMany([
+        $groceries->brands()->create(['name' => 'TODO'])->transactions()->createMany([
             [
                 'amount' => 200,
                 'created_at' => now()->subDay()
@@ -123,7 +123,7 @@ class CategoryBrandSeeder extends Seeder
                 'created_at' => now()->subDays(120)
             ]
         ]);
-        $shopping->brands()->create(['name' => 'MCDONALDS'])->transactions()->createMany([
+        $shopping->brands()->create(['name' => 'THE BLUE BOX'])->transactions()->createMany([
             [
                 'amount' => 40,
                 'created_at' => now()->subDays(2)
